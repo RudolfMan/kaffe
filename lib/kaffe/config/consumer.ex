@@ -91,7 +91,8 @@ defmodule Kaffe.Config.Consumer do
     [
       auto_start_producers: false,
       allow_topic_auto_creation: false,
-      begin_offset: begin_offset()
+      begin_offset: begin_offset(),
+      query_api_versions: query_api_versions()
     ]
   end
 
@@ -108,6 +109,10 @@ defmodule Kaffe.Config.Consumer do
 
   def worker_allocation_strategy do
     config_get(:worker_allocation_strategy, :worker_per_partition)
+  end
+
+  def query_api_versions do
+    config_get(:query_api_versions, true)
   end
 
   def maybe_heroku_kafka_ssl do
